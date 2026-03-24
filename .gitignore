@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+config.py
+utility.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+__pycache__
+
+# Data
+data/
+resources/
