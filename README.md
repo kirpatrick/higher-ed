@@ -21,9 +21,18 @@ See Jupyter notebooks, [database diagram](https://github.com/kirpatrick/higher-e
 ## Data
 - National Center for Education Statistics (NCES) Completions - Awards/degrees conferred by program<br />
 https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx
+  - C20204_A.CSV and C20203_A.CSV -
+  Awards/degrees conferred by program (6-digit CIP code), award level, race/ethnicity, and gender (e.g. 2024 data captures July 1, 2023 to June 30, 2024 awards/degree conferment)
+  - HD2024.CSV and HD2024.CSV -
+  Institutional characteristics; Directory information
+  - CIPCode2020.CSV -
+  The classification of instructional program (CIP), degree/award titles and descriptions
 
 - United States Bureau of Labor Statistics (BLS) Quarterly Census of Employment and Wages (QCEW) using the North American Industry Classification System (NAICS)<br />
 https://www.bls.gov/cew/downloadable-data-files.htm
+  - Quarterly Single Files (.zip) for 2023 and 2024 (e.g. 2023.q1-q4.singlefile.csv)
+  - QCEW Industry Codes and Titles for 2022-forward (e.g. industry-titles.csv, [2022 version](https://www.bls.gov/cew/classifications/industry/naics-2022.htm))
+  - QCEW Ownership Titles for NAICS-Based Data (e.g. ownership-titles-csv.csv, [last modified 2020](https://www.bls.gov/cew/classifications/ownerships/ownership-titles.htm))
 
 ## Results
 
