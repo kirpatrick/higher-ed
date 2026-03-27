@@ -23,7 +23,7 @@ See Jupyter notebooks, [database diagram](https://github.com/kirpatrick/higher-e
 https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx
   - C20204_A.CSV and C20203_A.CSV -
   Awards/degrees conferred by program (6-digit CIP code), award level, race/ethnicity, and gender (e.g. 2024 data captures July 1, 2023 to June 30, 2024 awards/degree conferment)
-  - HD2024.CSV and HD2024.CSV -
+  - HD2024.CSV and HD2023.CSV -
   Institutional characteristics; Directory information
   - CIPCode2020.CSV -
   The classification of instructional program (CIP), degree/award titles and descriptions
@@ -34,6 +34,9 @@ https://www.bls.gov/cew/downloadable-data-files.htm
   - QCEW Industry Codes and Titles for 2022-forward (e.g. industry-titles.csv, [2022 version](https://www.bls.gov/cew/classifications/industry/naics-2022.htm))
   - QCEW Ownership Titles for NAICS-Based Data (e.g. ownership-titles-csv.csv, [last modified 2020](https://www.bls.gov/cew/classifications/ownerships/ownership-titles.htm))
 
+- United States Federal Information Processing Series (FIPS) - 2020 Census codes for Counties and County Equivalent Entities<br>
+https://www.census.gov/library/reference/code-lists/ansi.html?#cou
+  
 ## Results
 
 
@@ -47,3 +50,5 @@ National Center for Education Statistics. (n.d.). IPEDS Data Center: Data files.
 National Center for Education Statistics. (n.d.). Classification of Instructional Programs (CIP): Resources. U.S. Department of Education. Retrieved March 25, 2026, from https://nces.ed.gov/ipeds/cipcode/resources.aspx
 
 U.S. Bureau of Labor Statistics. (n.d.). Quarterly Census of Employment and Wages: Downloadable data files. U.S. Department of Labor. Retrieved March 25, 2026, from https://www.bls.gov/cew/downloadable-data-files.htm
+
+U.S. Census Bureau. (n.d.). ANSI and FIPS codes. Retrieved March 26, 2026, from https://www.census.gov/library/reference/code-lists/ansi.html
