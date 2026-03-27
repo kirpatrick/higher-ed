@@ -89,7 +89,47 @@ CREATE TABLE IF NOT EXISTS fips_code_lookup(
 );
 
 
+/*
+-- UPDATE fips_code_lookup with missing CT state data
 
+-- INSERT INTO fips_code_lookup (state, statefp, countyfp, countyname, area_fips)
+SELECT DISTINCT 
+	a.stabbr AS state, 
+	'0' || LEFT(a.countycd, 1) AS statefp,
+ 	RIGHT(a.countycd, 3) AS countyfp, 
+	a.countynm AS countyname,
+	a.countycd AS area_fips
+FROM edu_hd20yy a
+LEFT JOIN fips_code_lookup b
+	ON a.countycd = b.area_fips
+WHERE
+	b.area_fips IS NULL
+	AND a.countynm IS NOT NULL;
+
+
+-- CHECK 
+SELECT DISTINCT area_fips, state, statefp, countyfp, countyns, countyname, classfp, funcstat
+FROM fips_code_lookup
+WHERE state = 'CT';
+*/
+
+/*
+-- INSERT INTO fips_code_lookup (state, statefp, countyfp, countyname, area_fips)
+SELECT DISTINCT 
+	state, 
+	statefp, 
+	'999' AS countyfp,
+	'not county assignable' AS countyname,
+	CASE
+		WHEN LEFT(statefp, 1) = '0' THEN RIGHT(statefp, 1) || '999'
+		ELSE statefp || '999' 
+	END AS area_fips
+FROM fips_code_lookup
+ORDER BY statefp;
+
+-- CHECK
+SELECT * FROM fips_code_lookup WHERE countyfp = '999';
+*/
 
 
 
