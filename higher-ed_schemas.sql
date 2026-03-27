@@ -76,6 +76,20 @@ CREATE TABLE IF NOT EXISTS edu_cipcodes_2020(
   examples text
 );
 
+CREATE TABLE IF NOT EXISTS fips_code_lookup(
+  id bigint generated always as identity primary key,
+  state varchar(2),
+  statefp varchar(2),
+  countyfp varchar(3),
+  countyns varchar(8),
+  countyname varchar(150),
+  classfp varchar(2),
+  funcstat varchar(1),
+  area_fips varchar(5)
+);
+
+
+
 
 
 
