@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS edu_c20yy_a (
   id bigint generated always as identity primary key,
   unitid varchar(6),
   cipcode varchar(7),
-  majornum smallint,
-  awlevel smallint,
+  majornum varchar(2),
+  awlevel varchar(2),
   ctotalt smallint,
   year varchar(4)
 );
@@ -88,6 +88,21 @@ CREATE TABLE IF NOT EXISTS fips_code_lookup(
   area_fips varchar(5)
 );
 
+CREATE TABLE IF NOT EXISTS edu_c20yy_dict(
+  id bigint generated always as identity primary key,
+  VarName varchar(25),
+  VarNumber numeric(5),
+  CodeValue varchar(7),
+  ORDINAL_POSITION numeric(3),
+  VarName1 varchar(25),
+  CodeValue1 varchar(7),
+  ValueLabel text,
+  Frequency numeric(9),
+  Percent numeric(7,3),
+  year varchar(4)
+);
+
+
 
 /*
 -- UPDATE fips_code_lookup with missing CT state data
@@ -131,6 +146,45 @@ ORDER BY statefp;
 SELECT * FROM fips_code_lookup WHERE countyfp = '999';
 */
 
+/* Summarized Education Data */
+-- vw_edu_summary
+ SELECT DISTINCT a.year,
+    institution.instnm AS institution,
+    institution.addr AS street,
+    institution.city AS institution_city,
+    countylookup.state,
+    institution.zip AS institution_zip,
+    institution.latitude AS institution_latitude,
+    institution.longitud AS institution_longitude,
+    countylookup.countyname,
+    cip.valuelabel AS program,
+        CASE
+            WHEN major.codevalue::text = '1'::text THEN 'Major'::text
+            ELSE 'Minor'::text
+        END AS major_minor,
+    awlevel.valuelabel AS award,
+    a.ctotalt AS award_total
+   FROM edu_c20yy_a a
+     LEFT JOIN edu_c20yy_dict cip ON a.cipcode::text = cip.codevalue::text AND a.year::text = cip.year::text AND cip.varname::text = 'CIPCODE'::text
+     LEFT JOIN edu_c20yy_dict awlevel ON a.awlevel::text = awlevel.codevalue::text AND a.year::text = awlevel.year::text AND awlevel.varname::text = 'AWLEVEL'::text
+     LEFT JOIN edu_c20yy_dict major ON a.majornum::text = major.codevalue::text AND a.year::text = major.year::text AND major.varname::text = 'MAJORNUM'::text
+     LEFT JOIN edu_hd20yy institution ON a.unitid::text = institution.unitid::text AND a.year::text = institution.year::text
+     LEFT JOIN fips_code_lookup countylookup ON institution.countycd::text = countylookup.area_fips::text
+  WHERE a.cipcode::text <> '99'::text AND (institution.stabbr::text <> ALL (ARRAY['FM'::character varying, 'MH'::character varying, 'PW'::character varying]::text[]));
 
+/* Summarized Employment Data */
+-- vw_empl_summary_agg75
+ SELECT DISTINCT a.year,
+    a.area_fips,
+    countylookup.countyname,
+    countylookup.state,
+    titles.own_title AS institution,
+    industries.industry_title AS industry,
+    a.month3_emplvl AS annual_employment
+   FROM empl_singlefile_qtrly a
+     LEFT JOIN empl_ownership_titles titles ON a.own_code::text = titles.own_code::text
+     LEFT JOIN empl_industry_titles industries ON a.industry_code::text = industries.industry_code::text
+     LEFT JOIN fips_code_lookup countylookup ON a.area_fips::text = countylookup.area_fips::text
+  WHERE a.agglvl_code::text = '75'::text;
 
 
