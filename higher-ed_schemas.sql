@@ -149,14 +149,10 @@ SELECT * FROM fips_code_lookup WHERE countyfp = '999';
 /* Summarized Education Data */
 -- vw_edu_summary
  SELECT DISTINCT a.year,
-    institution.instnm AS institution,
-    institution.addr AS street,
-    institution.city AS institution_city,
+    concat(institution.instnm, ', ', institution.addr, ', ', institution.city, ', ', countylookup.state, ', ', institution.zip) AS institution_address,
     countylookup.state,
-    institution.zip AS institution_zip,
-    institution.latitude AS institution_latitude,
-    institution.longitud AS institution_longitude,
-    countylookup.countyname,
+    countylookup.area_fips,
+    concat(countylookup.countyname, ', ', countylookup.state) AS county_state,
     cip.valuelabel AS program,
         CASE
             WHEN major.codevalue::text = '1'::text THEN 'Major'::text
@@ -178,6 +174,7 @@ SELECT * FROM fips_code_lookup WHERE countyfp = '999';
     a.area_fips,
     countylookup.countyname,
     countylookup.state,
+    concat(countylookup.countyname, ', ', countylookup.state) AS county_state,
     titles.own_title AS institution,
     industries.industry_title AS industry,
     a.month3_emplvl AS annual_employment
