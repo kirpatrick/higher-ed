@@ -171,16 +171,15 @@ SELECT * FROM fips_code_lookup WHERE countyfp = '999';
 /* Summarized Employment Data */
 -- vw_empl_summary_agg75
  SELECT DISTINCT a.year,
-    a.area_fips,
-    countylookup.countyname,
+    concat(countylookup.statefp, countylookup.countyfp) AS county_state_fips,
+    countylookup.countyname AS county,
     countylookup.state,
     concat(countylookup.countyname, ', ', countylookup.state) AS county_state,
     titles.own_title AS institution,
-    regexp_replace(industries.industry_title::text, '^[A-Z]{5} [0-9]{3} '::text, ''::text) AS naics_industry,
+    regexp_replace(industries.industry_title::text, '^[A-Z]{5} [0-9]{3} '::text, ''::text) AS industry,
     a.month3_emplvl AS annual_employment
    FROM empl_singlefile_qtrly a
      LEFT JOIN empl_ownership_titles titles ON a.own_code::text = titles.own_code::text
      LEFT JOIN empl_industry_titles industries ON a.industry_code::text = industries.industry_code::text
      LEFT JOIN fips_code_lookup countylookup ON a.area_fips::text = countylookup.area_fips::text
-  WHERE a.agglvl_code::text = '75'::text;
-
+  WHERE a.agglvl_code::text = '75'::text AND countylookup.countyfp::text <> '999'::text;
