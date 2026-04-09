@@ -12,7 +12,7 @@ See Jupyter notebooks, [database diagram](https://github.com/kirpatrick/higher-e
 
 3. Data Analysis:  **IN PROGRESS**
 <br>- Create views to summarized SQL tables
-<br>- Analyze data views using Tableau (and/or Power BI)
+<br>- Analyze data views using the following Tableau Dashboards (or <a href="https://drive.google.com/file/d/1x5kp3MJmV_WMfklDBbNle6zZntVdScO3/view?usp=sharing" target="_blank" rel="noopener noreferrer">downloadable Power BI Workbook (3.7MB)</a>)
 <br> &emsp; [Dashboard - US Higher Education Degrees by County](https://kirpatrick.github.io/#section1)
 <br> &emsp; [Dashboard - US Annual Employment by County](https://kirpatrick.github.io/#section2)
 <br><br>
