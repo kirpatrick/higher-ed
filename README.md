@@ -12,7 +12,10 @@ See Jupyter notebooks, [database diagram](https://github.com/kirpatrick/higher-e
 
 3. Data Analysis:  **IN PROGRESS**
 <br>- Create views to summarized SQL tables
-<br>- Analyze data views using Tableau (and/or Power BI)<br><br>
+<br>- Analyze data views using Tableau (and/or Power BI)
+<br> &emsp; [Dashboard - US Higher Education Degrees by County](https://kirpatrick.github.io/#section1)
+<br> &emsp; [Dashboard - US Annual Employment by County](https://kirpatrick.github.io/#section2)
+<br><br>
 
 4. Summarize & Publish Findings: TBD<br><br>
 
@@ -23,6 +26,7 @@ See Jupyter notebooks, [database diagram](https://github.com/kirpatrick/higher-e
 https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx
   - C20204_A.CSV and C20203_A.CSV -
   Awards/degrees conferred by program (6-digit CIP code), award level, race/ethnicity, and gender (e.g. 2024 data captures July 1, 2023 to June 30, 2024 awards/degree conferment)
+  - C2024_A_DICT.XLSX and C2025_A_DICT.XLSX - Data definitions for award/degree information.
   - HD2024.CSV and HD2023.CSV -
   Institutional characteristics; Directory information
   - CIPCode2020.CSV -
@@ -52,3 +56,5 @@ National Center for Education Statistics. (n.d.). Classification of Instructiona
 U.S. Bureau of Labor Statistics. (n.d.). Quarterly Census of Employment and Wages: Downloadable data files. U.S. Department of Labor. Retrieved March 25, 2026, from https://www.bls.gov/cew/downloadable-data-files.htm
 
 U.S. Census Bureau. (n.d.). ANSI and FIPS codes. Retrieved March 26, 2026, from https://www.census.gov/library/reference/code-lists/ansi.html
+
+Salesforce, Inc. (2026). Tableau Desktop: Connect, analyze, and visualize any data. Tableau. https://www.tableau.com/products/desktop
